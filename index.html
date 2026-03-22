@@ -174,7 +174,7 @@
 
 <!-- Desktop Top Navigation -->
 <div class="top-nav">
-  <div class="logo">Cowboy Steak House</div>
+  <div class="logo">Bondhu</div>
   <div class="nav-links">
     <div onclick="navigate('home')">Home</div>
     <div onclick="navigate('categories')">Categories</div>
@@ -182,7 +182,86 @@
     <div onclick="navigate('notifications')">Alerts</div>
     <div onclick="navigate('account')">Account</div>
   </div>
+  <div class="switch-container">
+  <div class="toggle-switch" id="lang-switch">
+    <span class="option-left">EN</span>
+    <span class="option-right">BN</span>
+    <div class="toggle-knob"></div>
+  </div>
+  <div class="toggle-switch" id="theme-switch">
+    <span class="option-left">🌙</span>
+    <span class="option-right">☀️</span>
+    <div class="toggle-knob"></div>
+  </div>
 </div>
+</div>
+
+<style>
+.switch-container {
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+.toggle-switch {
+  width:70px;
+  height:30px;
+  background:#f59e0b;
+  border-radius:30px;
+  position:relative;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5px;
+  color:#fff;
+  font-size:12px;
+  transition: background 0.3s;
+}
+.toggle-knob {
+  width:28px;
+  height:28px;
+  background:#fff;
+  border-radius:50%;
+  position:absolute;
+  top:1px;
+  left:1px;
+  transition:left 0.3s;
+}
+.toggle-switch.active {
+  background:#f59e0b;
+}
+.toggle-switch.active#theme-switch {
+  background:#191970;
+}
+.toggle-switch.active .toggle-knob {
+  left:41px;
+}
+</style>
+
+<script>
+const langSwitch = document.getElementById('lang-switch');
+const themeSwitch = document.getElementById('theme-switch');
+
+langSwitch.addEventListener('click', () => {
+  langSwitch.classList.toggle('active');
+  alert('Language switched to ' + (langSwitch.classList.contains('active') ? 'BN' : 'EN'));
+});
+
+themeSwitch.addEventListener('click', () => {
+  themeSwitch.classList.toggle('active');
+  if(document.body.classList.contains('dark-theme')) {
+    document.body.classList.remove('dark-theme');
+    document.body.classList.add('light-theme');
+  } else {
+    document.body.classList.remove('light-theme');
+    document.body.classList.add('dark-theme');
+  }
+});
+
+// Default theme
+document.body.classList.add('dark-theme');
+</script>
+
 
 <header>Cowboy Steak House</header>
 
@@ -202,15 +281,86 @@
   </div>
   </div>
 
-  <!-- Quick Menu Grid -->
-  <div class="grid">
-    <div class="grid-item">Steaks</div>
-    <div class="grid-item">Burgers</div>
-    <div class="grid-item">Drinks</div>
-    <div class="grid-item">Desserts</div>
-    <div class="grid-item">Offers</div>
-    <div class="grid-item">Combos</div>
+  <!-- Quick Menu Grid (Modern Icons) -->
+  <div class="grid modern-grid">
+    <div class="grid-item"><span>🏥</span><p>Hospitals</p></div>
+    <div class="grid-item"><span>🚑</span><p>Ambulance</p></div>
+    <div class="grid-item"><span>🩸</span><p>Blood Donors</p></div>
+    <div class="grid-item"><span>🚒</span><p>Fire Service</p></div>
+    <div class="grid-item"><span>👨‍⚕️</span><p>Doctors</p></div>
+
+    <div class="grid-item"><span>👮</span><p>Police</p></div>
+    <div class="grid-item"><span>⚖️</span><p>Lawyer</p></div>
+    <div class="grid-item"><span>📰</span><p>Journalists</p></div>
+    <div class="grid-item"><span>🏫</span><p>Education</p></div>
+    <div class="grid-item"><span>🚗</span><p>Car Services</p></div>
+
+    <div class="grid-item"><span>🏛️</span><p>History & Culture</p></div>
+    <div class="grid-item"><span>📞</span><p>Helplines</p></div>
+    <div class="grid-item"><span>🚌</span><p>Bus Services</p></div>
+    <div class="grid-item"><span>📍</span><p>Places</p></div>
+    <div class="grid-item"><span>🏙️</span><p>City Charters</p></div>
+
+    <div class="grid-item"><span>🌾</span><p>Agriculture</p></div>
+    <div class="grid-item"><span>💊</span><p>Health</p></div>
+    <div class="grid-item"><span>🏢</span><p>Offices</p></div>
+    <div class="grid-item"><span>📘</span><p>Union Intro</p></div>
+    <div class="grid-item"><span>🗳️</span><p>Polling</p></div>
+
+    <div class="grid-item"><span>📦</span><p>Courier</p></div>
+    <div class="grid-item"><span>👥</span><p>Population</p></div>
+    <div class="grid-item"><span>📮</span><p>Post Codes</p></div>
+    <div class="grid-item"><span>🏦</span><p>Banks</p></div>
+    <div class="grid-item"><span>⚡</span><p>Electricity</p></div>
+
+    <div class="grid-item"><span>⭐</span><p>VIPs</p></div>
   </div>
+
+  <style>
+    .modern-grid {
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:12px;
+      padding:15px;
+    }
+
+    .modern-grid .grid-item {
+      background:#1a1a1a;
+      border-radius:14px;
+      padding:12px 5px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .modern-grid .grid-item span {
+      font-size:22px;
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .modern-grid .grid-item p {
+      font-size:11px;
+    }
+
+    .modern-grid .grid-item:hover {
+      background:#2a2a2a;
+      transform:translateY(-3px);
+    }
+
+    /* Tablet */
+    @media (max-width:900px) {
+      .modern-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width:600px) {
+      .modern-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 
   <!-- Categories -->
   <div class="category">
